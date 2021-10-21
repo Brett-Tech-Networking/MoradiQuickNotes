@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Moradi Quick Notes</string>
+    <string name="delete_all_notes">Delete All Notes</string>
+    <string name="dumb_text_don_t_mind_me_lol">dumb text don\'t mind me lol</string>
+    <string name="biography">Biography</string>
+    <string name="long_text">I am a young developer with a goal in mind, Developing products that is not only beneficial and easy to use but will make an impact for someone. I am the Founder of Brett Tech Networking, I actively work on developing tutorials and training for multi-platform coding, Also Developing apps that will make life much simpler and hope to develop tools in the future that will help new enthusiasts learn and become successful.</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Moradi Quick Notes</string>
+    <string name="nav_header_subtitle">support@Brett-TechRepair.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+</resources>
