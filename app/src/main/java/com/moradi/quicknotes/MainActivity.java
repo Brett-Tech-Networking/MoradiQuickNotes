@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
-        setTheme(R.style.Theme_QuickNotes);
+        setTheme(R.style.LightTheme);
         setContentView(R.layout.nav_activity_main);
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -187,5 +188,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+    public void webButton(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RiverRougeCOGOP"));
+        startActivity(browserIntent);
+    }
 
 }
