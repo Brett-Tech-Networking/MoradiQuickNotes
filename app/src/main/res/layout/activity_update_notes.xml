@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/quicknotes"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context="com.moradi.quicknotes.UpdateNotesActivity">
 
 
@@ -14,19 +14,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="Title"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/white"
         android:id="@+id/title"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="Description"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/white"
         android:id="@+id/description"
         android:layout_below="@id/title"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/updateNote"

@@ -8,19 +8,22 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         app:cardCornerRadius="3dp"
         app:cardElevation="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
                 android:text="Moradi Quick Notes"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -29,9 +32,12 @@
             <TextView
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/title"
-                android:layout_margin="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
                 android:text="Create notes faster then ever"
                 android:textColor="@color/black"
                 android:textSize="18sp" />

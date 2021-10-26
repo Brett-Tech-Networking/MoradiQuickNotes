@@ -21,34 +21,45 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="45dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="About"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="177dp"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="120dp"
+            android:layout_width="0dp"
             android:layout_height="140dp"
-            android:scaleType="centerCrop"
+            android:layout_marginStart="56dp"
 
-            app:srcCompat="@drawable/moradinotepad1"
-            tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="60dp" />
+            android:layout_marginEnd="42dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/moradinotepad1" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="68dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Moradi Notepad"
             android:textColor="#fff"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="227dp"
-            tools:layout_editor_absoluteY="90dp" />
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView3"
@@ -57,31 +68,39 @@
             android:fontFamily="@font/montserrat"
             android:text="Android Development"
             android:textColor="#fff"
-            tools:layout_editor_absoluteX="208dp"
-            tools:layout_editor_absoluteY="113dp" />
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="@+id/webbutton"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:fontFamily="@font/montserrat"
             android:text="Brett Tech Networking"
             android:textColor="#fff"
             android:textSize="12dp"
-            tools:layout_editor_absoluteX="218dp"
-            tools:layout_editor_absoluteY="135dp" />
+            app:layout_constraintBottom_toTopOf="@+id/webbutton"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/webbutton"
-            android:layout_width="171dp"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="50dp"
             android:onClick="webButton"
             app:cardBackgroundColor="@color/colorPrimaryDark"
             app:cardCornerRadius="16dp"
             app:cardElevation="5dp"
             app:cardMaxElevation="5dp"
-            tools:layout_editor_absoluteX="208dp"
-            tools:layout_editor_absoluteY="160dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
 
             <TextView
                 android:layout_width="wrap_content"

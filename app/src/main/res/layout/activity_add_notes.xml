@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/quicknotes"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".AddNotesActivity">
 
     <EditText
@@ -13,20 +13,23 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="Title"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/white"
         android:id="@+id/title"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"/>
 
     <EditText
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Description"
-        android:textColorHint="@color/black"
-        android:id="@+id/description"
-        android:inputType="textMultiLine"
         android:layout_below="@id/title"
-        android:textColor="@color/black"/>
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Description"
+        android:inputType="textMultiLine"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <Button
         android:layout_width="match_parent"

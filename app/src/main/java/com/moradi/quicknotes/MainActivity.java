@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = databaseClass.readAllData();
 
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data to show", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Currently No Notes", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
                 notesList.add(new Model(cursor.getString(0), cursor.getString(1), cursor.getString(2)));
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
-
+// Search notes conf
         MenuItem searchItem = menu.findItem(R.id.searchbar);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("Search Notes Here");
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
             adapter.removeItem(viewHolder.getAdapterPosition());
 
-            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Item Deleted", Snackbar.LENGTH_LONG)
+            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Note Deleted", Snackbar.LENGTH_LONG)
                     .setAction("UNDO", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
