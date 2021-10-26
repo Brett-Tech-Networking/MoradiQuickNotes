@@ -7,7 +7,7 @@
         android:title="navdrawer"
         app:actionViewClass="android.widget.SlidingDrawer"
         app:showAsAction="always|collapseActionView"
-
+        android:visible="false"
         />
     <!--DELETE NOTES-->
     <item
@@ -23,7 +23,8 @@
     <!--ABOUT-->
     <item
         android:title="About"
-        android:id="@+id/about" />
+        android:id="@+id/about"
+        />
 
     <!--SEARCH BAR-->
     <item

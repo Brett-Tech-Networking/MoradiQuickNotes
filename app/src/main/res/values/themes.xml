@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" android:textstyle="bold">>
 
 <!--SPLASH SCREEN THEME-->
 <!--    <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">-->
@@ -10,7 +10,7 @@
     <style name="Theme.QuickNotes" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimary">@color/darkblue</item>
+        <item name="colorPrimary">@color/AppTitle</item>
         <item name="colorPrimaryVariant">@color/darkblue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
