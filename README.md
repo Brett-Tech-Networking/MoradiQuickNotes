@@ -1,5 +1,4 @@
 # MoradiQuickNotes
-Android application for Moradi Notepad
 
 # **Moradi Notepad is now coming to mobile!** 
 
@@ -20,6 +19,8 @@ Android application for Moradi Notepad
 - Modify your notes colors and sizes or maybe add a photo !
 
 - Accidently delete a note well don't worry check the trash!
+
+Check out more at [Brett Tech Coding](https://www.bretttechcoding.com/Projects/quicknotes)
 
 
 
