@@ -8,16 +8,16 @@
         <menu>
             <item
                 android:id="@+id/nav_home"
-                android:icon="@drawable/ic_menu_camera"
-                android:title="@string/menu_home" />
+                android:icon="@drawable/ic_baseline_notes_24"
+                android:title="All Notes" />
             <item
                 android:id="@+id/nav_gallery"
-                android:icon="@drawable/ic_menu_gallery"
-                android:title="@string/menu_gallery" />
+                android:icon="@drawable/ic_baseline_favorites"
+                android:title="Favorites" />
             <item
                 android:id="@+id/nav_slideshow"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="@string/menu_slideshow" />
+                android:icon="@drawable/ic_baseline_trash"
+                android:title="Trash" />
         </menu>
         </item>
     </group>

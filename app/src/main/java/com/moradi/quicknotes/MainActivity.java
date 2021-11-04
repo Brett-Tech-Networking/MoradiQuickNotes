@@ -1,6 +1,8 @@
 package com.moradi.quicknotes;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SearchView;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
+
         setTheme(R.style.LightTheme);
         setContentView(R.layout.nav_activity_main);
 
@@ -62,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddNotesActivity.class);
                 startActivity(intent);
+
+
             }
-
         });
-
         notesList = new ArrayList<>();
         databaseClass = new DatabaseClass(this);
         fetchAllNotesFromDatabase();
@@ -76,10 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         ItemTouchHelper helper = new ItemTouchHelper(callback);
         helper.attachToRecyclerView(recyclerView);
-
-
     }
-
 
     void fetchAllNotesFromDatabase() {
         Cursor cursor = databaseClass.readAllData();
@@ -125,24 +126,48 @@ public class MainActivity extends AppCompatActivity {
             deleteAllNotes();
         }
        else
+           //ABOUT MENU
         if (item.getItemId() == R.id.about) {
-            Intent intent = new Intent(MainActivity.this, About.class);
-            startActivity(intent);
+            Toast.makeText(this, "Temporarily removed for updates.", Toast.LENGTH_LONG).show();
+           // Intent intent = new Intent(MainActivity.this, About.class);
+           // startActivity(intent);
             return true;
         }
         else
         if (item.getItemId() == R.id.settings) {
-            Intent intent = new Intent(MainActivity.this, Settings.class);
-            startActivity(intent);
+            Toast.makeText(this, "Temporarily removed for updates.", Toast.LENGTH_LONG).show();
+            // Intent intent = new Intent(MainActivity.this, Settings.class);
+           // startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void deleteAllNotes() {
-        DatabaseClass db = new DatabaseClass(MainActivity.this);
-        db.deleteAllNotes();
-        recreate();
+       // DatabaseClass db = new DatabaseClass(MainActivity.this);
+       // db.deleteAllNotes();
+       // recreate();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirm");
+        builder.setMessage("Are you sure you want to delete all notes?");
+
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                 DatabaseClass db = new DatabaseClass(MainActivity.this);
+                 db.deleteAllNotes();
+                 recreate();
+            }
+        });
+
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 
