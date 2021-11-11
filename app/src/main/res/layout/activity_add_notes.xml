@@ -6,27 +6,35 @@
     android:layout_height="match_parent"
     android:theme="@style/quicknotes"
     android:background="@color/black"
+    app:counterEnabled="true"
     tools:context=".AddNotesActivity">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Title"
-        android:textColorHint="@color/white"
         android:id="@+id/title"
-        android:textColor="@color/white"/>
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_bottom_line"
+        android:hint="Title"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <EditText
         android:id="@+id/description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/addNote"
         android:layout_below="@id/title"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:hint="Description"
+        android:background="@drawable/edittext_bottom_line"
+        android:hint="@string/description"
+        android:gravity="top|start"
         android:inputType="textMultiLine"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -39,11 +47,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/darkblue"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/custom_btn_bg"
         android:text="Add Note"
-        android:textColor="@color/white"
+        android:textColor="@color/lightblue"
         android:textSize="18sp"
         android:textStyle="bold" />
-
 </RelativeLayout>

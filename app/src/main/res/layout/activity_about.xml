@@ -35,8 +35,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="140dp"
+            android:layout_width="61dp"
+            android:layout_height="78dp"
             android:layout_marginStart="56dp"
 
             android:layout_marginEnd="42dp"
@@ -45,6 +45,7 @@
             app:layout_constraintEnd_toStartOf="@+id/textView4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.313"
             app:srcCompat="@drawable/moradinotepad1" />
 
         <TextView

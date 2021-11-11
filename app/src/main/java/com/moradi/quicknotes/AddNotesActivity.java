@@ -7,10 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -26,14 +29,28 @@ public class AddNotesActivity extends AppCompatActivity {
 
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
-
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+
+        //TESTING this is for "done" button on add note screen
+        actionBar.setDisplayOptions(actionBar.getDisplayOptions()
+                | ActionBar.DISPLAY_SHOW_CUSTOM);
+        ImageView imageView = new ImageView(actionBar.getThemedContext());
+        imageView.setScaleType(ImageView.ScaleType.CENTER);
+        imageView.setImageResource(R.drawable.ic_baseline_check_24);
+        ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(
+                ActionBar.LayoutParams.WRAP_CONTENT,
+                ActionBar.LayoutParams.WRAP_CONTENT, Gravity.RIGHT
+                | Gravity.CENTER_VERTICAL);
+        layoutParams.rightMargin = 40;
+        imageView.setLayoutParams(layoutParams);
+        actionBar.setCustomView(imageView);
+
+        //Title Desc & add note
         title = findViewById(R.id.title);
         description = findViewById(R.id.description);
         addNote = findViewById(R.id.addNote);
-
         addNote.setOnClickListener(new View.OnClickListener() {
 
 
@@ -53,7 +70,9 @@ public class AddNotesActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
     // this event will enable the back
     // function to the button on press
     @Override

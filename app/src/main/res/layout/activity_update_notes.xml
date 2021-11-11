@@ -11,22 +11,30 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="8dp"
         android:hint="Title"
         android:textColorHint="@color/white"
         android:id="@+id/title"
+        android:background="@drawable/edittext_bottom_line"
         android:textColor="@color/white"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Description"
-        android:textColorHint="@color/white"
         android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/updateNote"
         android:layout_below="@id/title"
-        android:textColor="@color/white"/>
+        android:background="@drawable/edittext_bottom_line"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="top|start"
+        android:hint="@string/description"
+        android:inputType="textMultiLine"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <Button
         android:id="@+id/updateNote"
@@ -39,7 +47,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/custom_btn_bg"
         android:text="Update Note"
-        android:textColor="@color/white"
+        android:textColor="@color/lightblue"
         android:textSize="18sp"
         android:textStyle="bold" />
 
