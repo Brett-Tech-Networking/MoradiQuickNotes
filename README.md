@@ -22,5 +22,5 @@
 
 Check out more at [Brett Tech Coding](https://www.bretttechcoding.com/Projects/quicknotes)
 
-
-
+![Tool Screenshots](https://github.com/Brett-Tech-Networking/MoradiQuickNotes/blob/main/Screenshot_1637110354.png)
+![Tool Screenshots](https://github.com/Brett-Tech-Networking/MoradiQuickNotes/blob/main/Screenshot_1637110384.png)
