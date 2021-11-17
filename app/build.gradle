@@ -33,6 +33,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.1.1"
 }
 dependencies {
+    implementation 'com.github.yukuku:ambilwarna:2.0.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'

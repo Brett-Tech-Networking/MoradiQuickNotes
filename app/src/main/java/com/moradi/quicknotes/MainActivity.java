@@ -36,38 +36,40 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import android.util.Log;
 
 
 public class MainActivity extends AppCompatActivity {
-
+//VAR's
     RecyclerView recyclerView;
     FloatingActionButton fab;
     Adapter adapter;
     List<Model> notesList;
     DatabaseClass databaseClass;
     CoordinatorLayout coordinatorLayout;
+    Button btn_sort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
-
+//Theme
         setTheme(R.style.LightTheme);
         setContentView(R.layout.nav_activity_main);
-
+// Floating action button
         recyclerView = findViewById(R.id.recycler_view);
         fab = findViewById(R.id.fab);
         coordinatorLayout = findViewById(R.id.layout_main);
 
+//Fab click action
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddNotesActivity.class);
                 startActivity(intent);
-
-
             }
         });
         notesList = new ArrayList<>();
@@ -92,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
                 notesList.add(new Model(cursor.getString(0), cursor.getString(1), cursor.getString(2)));
             }
         }
-
     }
 
     @Override
@@ -170,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
-
     ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -201,21 +201,14 @@ public class MainActivity extends AppCompatActivity {
                                 DatabaseClass db = new DatabaseClass(MainActivity.this);
                                 db.deleteSingleItem(item.getId());
                             }
-
-
                         }
                     });
-
-
             snackbar.setActionTextColor(Color.YELLOW);
             snackbar.show();
-
         }
-
     };
     public void webButton(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RiverRougeCOGOP"));
         startActivity(browserIntent);
     }
-
 }

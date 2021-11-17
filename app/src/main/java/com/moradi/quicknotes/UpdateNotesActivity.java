@@ -18,9 +18,10 @@ import android.text.TextWatcher;
 
 public class UpdateNotesActivity extends AppCompatActivity {
 
-    EditText title,description;
+    EditText title, description;
     Button updateNotes;
     String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,32 +33,29 @@ public class UpdateNotesActivity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        title=findViewById(R.id.title);
-        description=findViewById(R.id.description);
-        updateNotes=findViewById(R.id.updateNote);
+        title = findViewById(R.id.title);
+        description = findViewById(R.id.description);
+        updateNotes = findViewById(R.id.updateNote);
 
-        Intent i =getIntent();
+        Intent i = getIntent();
         title.setText(i.getStringExtra("title"));
         description.setText(i.getStringExtra("description"));
-        id=i.getStringExtra("id");
+        id = i.getStringExtra("id");
 
         updateNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString()))
-                {
+                if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
 
                     DatabaseClass db = new DatabaseClass(UpdateNotesActivity.this);
-                    db.updateNotes(title.getText().toString(),description.getText().toString(),id);
+                    db.updateNotes(title.getText().toString(), description.getText().toString(), id);
 
-                    Intent i=new Intent(UpdateNotesActivity.this,MainActivity.class);
+                    Intent i = new Intent(UpdateNotesActivity.this, MainActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(i);
                     finish();
-                }
-                else
-                {
+                } else {
                     Toast.makeText(UpdateNotesActivity.this, "Both Fields Required", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -65,6 +63,19 @@ public class UpdateNotesActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //execute auto save when back is clicked
+        if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
+            DatabaseClass db = new DatabaseClass(UpdateNotesActivity.this);
+            db.updateNotes(title.getText().toString(), description.getText().toString(), id);
+            Intent i = new Intent(UpdateNotesActivity.this, MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+            finish();
+        } else {
+            Toast.makeText(UpdateNotesActivity.this, "Both Fields Required", Toast.LENGTH_SHORT).show();
+        }
+
+        // go back to home
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
