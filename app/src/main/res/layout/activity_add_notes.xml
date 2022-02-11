@@ -19,6 +19,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/edittext_bottom_line"
         android:hint="Title"
+        android:autoLink="web"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
@@ -32,9 +33,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autoLink="web"
         android:background="@drawable/edittext_bottom_line"
-        android:hint="@string/description"
         android:gravity="top|start"
+        android:hint="@string/description"
         android:inputType="textMultiLine"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -53,4 +55,6 @@
         android:textColor="@color/lightblue"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+
 </RelativeLayout>

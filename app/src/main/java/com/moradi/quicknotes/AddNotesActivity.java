@@ -57,11 +57,11 @@ public class AddNotesActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
                     DatabaseClass db = new DatabaseClass(AddNotesActivity.this);
                     db.addNotes(title.getText().toString(), description.getText().toString());
-
-                    Intent intent = new Intent(AddNotesActivity.this,MainActivity.class);
+                    Intent intent = new Intent(AddNotesActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
@@ -70,12 +70,12 @@ public class AddNotesActivity extends AppCompatActivity {
                     Toast.makeText(AddNotesActivity.this, "Title & Description Required", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
 
+        });
     }
 
     // this event will enable the back
-    // function to the button on press
+    // function to the button on back button press top left
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //execute auto save when back is clicked
@@ -83,7 +83,7 @@ public class AddNotesActivity extends AppCompatActivity {
             DatabaseClass db = new DatabaseClass(AddNotesActivity.this);
             db.addNotes(title.getText().toString(), description.getText().toString());
 
-            Intent intent = new Intent(AddNotesActivity.this,MainActivity.class);
+            Intent intent = new Intent(AddNotesActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
@@ -99,5 +99,23 @@ public class AddNotesActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Phone Back Button Press
+    @Override
+    public void onBackPressed() {
+        //execute auto save when back is clicked
+        if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
+            DatabaseClass db = new DatabaseClass(AddNotesActivity.this);
+            db.addNotes(title.getText().toString(), description.getText().toString());
+
+            Intent intent = new Intent(AddNotesActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+
+        } else {
+            Toast.makeText(AddNotesActivity.this, "Title & Description Required", Toast.LENGTH_SHORT).show();
+        }
     }
 }

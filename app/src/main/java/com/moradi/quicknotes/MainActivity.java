@@ -21,6 +21,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -135,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         else
+            if (item.getItemId() == R.id.DisableNotes){
+                DisableNotes();
+            }
+        else
         if (item.getItemId() == R.id.settings) {
             Toast.makeText(this, "Temporarily removed for updates.", Toast.LENGTH_LONG).show();
             // Intent intent = new Intent(MainActivity.this, Settings.class);
@@ -160,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
                  recreate();
             }
         });
-
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -171,12 +175,17 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
+    // DISABLE NOTES ON MAIN LIST
+    private void DisableNotes(){
+
+    }
+
     ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
         }
-
+//SWIPE RIGHT TO DELETE NOTE
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 

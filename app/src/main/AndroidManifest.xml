@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.moradi.quicknotes">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +13,9 @@
         android:roundIcon="@mipmap/moradi_icon1_round"
         android:supportsRtl="true"
         android:debuggable="false"
-        android:theme="@style/LightTheme">
+        android:theme="@style/LightTheme"
+        tools:ignore="HardcodedDebugMode"
+        android:textColorLink="#03A9F4">
         <activity
             android:name=".DrawerActivity"
             android:label="@string/title_activity_drawer"

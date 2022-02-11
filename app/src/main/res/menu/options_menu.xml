@@ -15,6 +15,12 @@
         android:icon="@drawable/ic_baseline_info_24"
         android:title="@string/delete_all_notes"
         />
+    <!--Lock Notes-->
+    <item
+        android:id="@+id/DisableNotes"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="@string/disable_all_notes"
+        />
     <!--SETTINGS-->
     <item
         android:title="Settings"

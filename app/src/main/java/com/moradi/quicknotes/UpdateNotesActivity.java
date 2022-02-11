@@ -45,7 +45,6 @@ public class UpdateNotesActivity extends AppCompatActivity {
         updateNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
 
                     DatabaseClass db = new DatabaseClass(UpdateNotesActivity.this);
@@ -61,6 +60,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //execute auto save when back is clicked
@@ -82,5 +82,21 @@ public class UpdateNotesActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Phone Back Button Press
+    @Override
+    public void onBackPressed() {
+        //execute auto save when back is clicked
+        if (!TextUtils.isEmpty(title.getText().toString()) && !TextUtils.isEmpty(description.getText().toString())) {
+            DatabaseClass db = new DatabaseClass(UpdateNotesActivity.this);
+            db.updateNotes(title.getText().toString(), description.getText().toString(), id);
+            Intent i = new Intent(UpdateNotesActivity.this, MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+            finish();
+        } else {
+            Toast.makeText(UpdateNotesActivity.this, "Both Fields Required", Toast.LENGTH_SHORT).show();
+        }
     }
 }
