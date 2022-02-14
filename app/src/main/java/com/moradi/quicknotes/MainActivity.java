@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseClass databaseClass;
     CoordinatorLayout coordinatorLayout;
     Button btn_sort;
+    ImageButton fvrt_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
                 return makeMovementFlags(dragFlags, 0);
             }
-
         };
-
 
         //Click Drag Notes
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
 
         ItemTouchHelper helper = new ItemTouchHelper(callback);
         helper.attachToRecyclerView(recyclerView);
-
 
         //
         notesList = new ArrayList<>();

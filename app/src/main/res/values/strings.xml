@@ -17,5 +17,6 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="description">Description</string>
     <string name="disable_all_notes">Disable All Notes</string>
+    <string name="todo">TODO</string>
 
 </resources>
