@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -44,7 +45,7 @@ import android.util.Log;
 
 
 public class MainActivity extends AppCompatActivity {
-//VAR's
+    //VAR's
     RecyclerView recyclerView;
     FloatingActionButton fab;
     Adapter adapter;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
+
 //Theme
         setTheme(R.style.LightTheme);
         setContentView(R.layout.nav_activity_main);
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         fab = findViewById(R.id.fab);
         coordinatorLayout = findViewById(R.id.layout_main);
+        recyclerView.setAdapter(recyclerView.getAdapter());
 
 //Fab click action
         fab.setOnClickListener(new View.OnClickListener() {
@@ -73,16 +76,51 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        notesList = new ArrayList<>();
-        databaseClass = new DatabaseClass(this);
-        fetchAllNotesFromDatabase();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this, MainActivity.this, notesList);
-        recyclerView.setAdapter(adapter);
+//Click drag Notes feature
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
+                int fromPosition = viewHolder.getBindingAdapterPosition();
+                int toPosition = target.getBindingAdapterPosition();
+                Collections.swap(notesList, fromPosition, toPosition);
+                recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+
+                return false;
+            }
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+            @Override //This forces arrangement up or down not any direction
+            public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+                int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+                return makeMovementFlags(dragFlags, 0);
+            }
+
+        };
+
+
+        //Click Drag Notes
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         ItemTouchHelper helper = new ItemTouchHelper(callback);
         helper.attachToRecyclerView(recyclerView);
+
+
+        //
+        notesList = new ArrayList<>();
+        databaseClass = new
+                DatabaseClass(this);
+        fetchAllNotesFromDatabase();
+        recyclerView.setLayoutManager(new
+                LinearLayoutManager(this));
+        adapter = new
+                Adapter(this, MainActivity.this, notesList);
+        recyclerView.setAdapter(adapter);
+
     }
 
     void fetchAllNotesFromDatabase() {
@@ -126,33 +164,26 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.delete_all_notes) {
             deleteAllNotes();
-        }
-       else
-           //ABOUT MENU
-        if (item.getItemId() == R.id.about) {
-            Toast.makeText(this, "Temporarily removed for updates.", Toast.LENGTH_LONG).show();
-           // Intent intent = new Intent(MainActivity.this, About.class);
-           // startActivity(intent);
-            return true;
-        }
-        else
-            if (item.getItemId() == R.id.DisableNotes){
-                DisableNotes();
+        } else
+            //ABOUT MENU
+            if (item.getItemId() == R.id.about) {
+                Toast.makeText(this, "Temporarily removed for updates.", Toast.LENGTH_LONG).show();
+                // Intent intent = new Intent(MainActivity.this, About.class);
+                // startActivity(intent);
+                return true;
+            } else if (item.getItemId() == R.id.settings) {
+                Toast.makeText(this, "Temporarily removed for updates.", Toast.LENGTH_LONG).show();
+                // Intent intent = new Intent(MainActivity.this, Settings.class);
+                // startActivity(intent);
+                return true;
             }
-        else
-        if (item.getItemId() == R.id.settings) {
-            Toast.makeText(this, "Temporarily removed for updates.", Toast.LENGTH_LONG).show();
-            // Intent intent = new Intent(MainActivity.this, Settings.class);
-           // startActivity(intent);
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
     private void deleteAllNotes() {
-       // DatabaseClass db = new DatabaseClass(MainActivity.this);
-       // db.deleteAllNotes();
-       // recreate();
+        // DatabaseClass db = new DatabaseClass(MainActivity.this);
+        // db.deleteAllNotes();
+        // recreate();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Confirm");
@@ -160,9 +191,9 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                 DatabaseClass db = new DatabaseClass(MainActivity.this);
-                 db.deleteAllNotes();
-                 recreate();
+                DatabaseClass db = new DatabaseClass(MainActivity.this);
+                db.deleteAllNotes();
+                recreate();
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -175,17 +206,13 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
-    // DISABLE NOTES ON MAIN LIST
-    private void DisableNotes(){
-
-    }
-
     ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
         }
-//SWIPE RIGHT TO DELETE NOTE
+
+        //SWIPE RIGHT TO DELETE NOTE
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
@@ -216,8 +243,9 @@ public class MainActivity extends AppCompatActivity {
             snackbar.show();
         }
     };
-    public void webButton(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RiverRougeCOGOP"));
-        startActivity(browserIntent);
-    }
-}
+        public void webButton(View view) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RiverRougeCOGOP"));
+            startActivity(browserIntent);
+        }
+    };
+

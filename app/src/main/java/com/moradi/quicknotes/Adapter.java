@@ -1,19 +1,21 @@
 package com.moradi.quicknotes;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +41,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.title.setText(notesList.get(position).getTitle());
         holder.description.setText(notesList.get(position).getDescription());
@@ -99,18 +101,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
     };
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, description;
+        private static final String TAG = "MyViewHolder";
+        TextView title, description, textView;
+        ImageButton imageButton;
         RelativeLayout layout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
             layout = itemView.findViewById(R.id.note_layout);
+
         }
     }
-
 
     public List<Model> getList() {
         return notesList;
@@ -125,4 +128,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
         notesList.add(position, item);
         notifyItemInserted(position);
     }
+
+
 }

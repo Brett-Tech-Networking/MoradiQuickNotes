@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.mikepenz.materialdrawer.Drawer;
+
 
 public class AddNotesActivity extends AppCompatActivity {
 
@@ -34,7 +36,7 @@ public class AddNotesActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        //TESTING this is for "done" button on add note screen
+        //TESTING this is for "done" button on add note screen TOP RIGHT CHECK MARK
         actionBar.setDisplayOptions(actionBar.getDisplayOptions()
                 | ActionBar.DISPLAY_SHOW_CUSTOM);
         ImageView imageView = new ImageView(actionBar.getThemedContext());
@@ -47,7 +49,6 @@ public class AddNotesActivity extends AppCompatActivity {
         layoutParams.rightMargin = 40;
         imageView.setLayoutParams(layoutParams);
         actionBar.setCustomView(imageView);
-
         //Title Desc & add note
         title = findViewById(R.id.title);
         description = findViewById(R.id.description);

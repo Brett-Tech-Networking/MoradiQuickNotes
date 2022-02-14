@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="30dp"
-        android:backgroundTint="@color/design_default_color_primary_dark"
+        android:backgroundTint="@color/darkblue"
         android:lines="2"
         android:src="@drawable/ic_baseline_add_24"
         app:fab_size="mini"
@@ -27,6 +27,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         />
 
 
